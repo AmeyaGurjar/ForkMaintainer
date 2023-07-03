@@ -6,7 +6,7 @@ from github import Github, Auth
 from os import getenv, system, remove
 MY_REPO = "Project-FelineX"
 try:
-	remove("logs.txt")
+    remove("logs.txt")
 except:
     pass
 logFile = open("logs.txt", "a")
