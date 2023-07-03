@@ -7,11 +7,13 @@ GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 REPO_NAME = "LineageOS"
 MY_REPO = "Project-FelineX"
 
-user = GIT.get_user(REPO_NAME)
+lineage = GIT.get_user(REPO_NAME)
+user = GIT.get_organization(MY_REPO)
 
-for repo in user.get_repos():
+for repo in lineage.get_repos():
     repo = repo.full_name.replace(f"{REPO_NAME}/", "")
     if "device" not in repo and "kernel" not in repo:
+        user.create_fork(repo)
         print(repo)
     else:
         continue
