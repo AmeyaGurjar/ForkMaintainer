@@ -11,5 +11,5 @@ user = GIT.get_user(REPO_NAME)
 
 for repo in user.get_repos():
     repo = repo.full_name.replace(f"{REPO_NAME}/", "")
-    if not repo.includes("device"):
+    if "device" not in repo:
         print(repo)
