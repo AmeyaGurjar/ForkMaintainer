@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+from time import sleep
 from github import Github, Auth
 from os import getenv, system
 
@@ -22,6 +23,7 @@ for repo in lineage.get_repos():
         if meowcheck:
             meowcheck.delete()
             print("Deleted")
+        sleep(5)
         try:
             org.create_fork(repo, default_branch_only=True)
             print("Forked!")
