@@ -15,7 +15,7 @@ for repo in lineage.get_repos():
     if "device" not in repo and "kernel" not in repo:
         print(f"{REPO_NAME}/{repo}")
         try:
-            user.create_fork(f"{REPO_NAME}/{repo}")
+            user.create_fork(f"{REPO_NAME}/{repo}", default_branch_only=True)
             print("Forked!")
         except Exception as e:
             print(e)
