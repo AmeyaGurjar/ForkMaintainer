@@ -15,7 +15,7 @@ GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 org = GIT.get_organization(MY_REPO)
 
 for repo_num, repo in enumerate(org.get_repos()):
-	print(f"Deleting {repo.full_name}")
+    print(f"Deleting {repo.full_name}")
     try:
         repo.delete()
         logFile.write(f"{repo_num} - [DELETED] - {repo.full_name}")
