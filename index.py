@@ -50,7 +50,7 @@ for repo_num, repo in enumerate(lineage.get_repos()):
                     logFile.write(f"[ERROR] - {repomain}\n")
                     print("Error Forking!")
                     print(e)
-                    if "API" not in str(e) and "too quickly" not in str(e):
+                    if "API" not in str(e):
                         break
                     sleep(80)
                     continue
