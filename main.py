@@ -17,7 +17,7 @@ for repo in lineage.get_repos():
         print(f"{REPO_NAME}/{repomain}")
         try:
             meowcheck = org.get_repo(repomain)
-        else:
+        except:
             meowcheck = False
         if meowcheck:
             meowcheck.delete()
