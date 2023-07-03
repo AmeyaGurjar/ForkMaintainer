@@ -28,23 +28,23 @@ for repo in lineage.get_repos():
             for i in range(10):
                 try:
                     meowcheck.delete()
-                    logFile.write(f"[DELETED] - {repomain}/n")
+                    logFile.write(f"[DELETED] - {repomain}\n")
                     print("Deleted")
                     break
                 except: 
                     print("Error Deletion!")
-                    logFile.write(f"[NODELETE] - {repomain}/n")
+                    logFile.write(f"[NODELETE] - {repomain}\n")
                     sleep(5)
                     continue
         sleep(1)
         for i in range(10):
             try:
                 org.create_fork(repo, default_branch_only=True)
-                logFile.write(f"[FORKED] - {repomain}/n")
+                logFile.write(f"[FORKED] - {repomain}\n")
                 print("Forked!")
                 break
             except Exception as e:
-                logFile.write(f"[ERROR] - {repomain}/n")
+                logFile.write(f"[ERROR] - {repomain}\n")
                 print("Error Forking!")
                 sleep(5)
                 continue
