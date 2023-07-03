@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+from sys import argv
 from time import sleep
 from github import Github, Auth
 from os import getenv, system, remove
@@ -25,31 +26,33 @@ for repo in lineage.get_repos():
         except:
             meowcheck = False
         if meowcheck:
+            if "--skip" not in str(argv[1]):
+                for i in range(10):
+                    try:
+                        meowcheck.delete()
+                        logFile.write(f"[DELETED] - {repomain}\n")
+                        print("Deleted")
+                        break
+                    except Exception as e: 
+                        print("Error Deletion!")
+                        print(e)
+                        logFile.write(f"[NODELETE] - {repomain}\n")
+                        sleep(1)
+                        continue
+        sleep(1)
+        if "--skip" not in str(argv[1]) and meowcheck==False:
             for i in range(10):
                 try:
-                    meowcheck.delete()
-                    logFile.write(f"[DELETED] - {repomain}\n")
-                    print("Deleted")
+                    org.create_fork(repo, default_branch_only=True)
+                    logFile.write(f"[FORKED] - {repomain}\n")
+                    print("Forked!")
                     break
-                except Exception as e: 
-                    print("Error Deletion!")
+                except Exception as e:
+                    logFile.write(f"[ERROR] - {repomain}\n")
+                    print("Error Forking!")
                     print(e)
-                    logFile.write(f"[NODELETE] - {repomain}\n")
                     sleep(1)
                     continue
-        sleep(1)
-        for i in range(10):
-            try:
-                org.create_fork(repo, default_branch_only=True)
-                logFile.write(f"[FORKED] - {repomain}\n")
-                print("Forked!")
-                break
-            except Exception as e:
-                logFile.write(f"[ERROR] - {repomain}\n")
-                print("Error Forking!")
-                print(e)
-                sleep(1)
-                continue
     else:
         continue
 logFile.close()
