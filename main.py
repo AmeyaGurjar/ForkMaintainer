@@ -31,8 +31,9 @@ for repo in lineage.get_repos():
                     logFile.write(f"[DELETED] - {repomain}\n")
                     print("Deleted")
                     break
-                except: 
+                except Exception as e: 
                     print("Error Deletion!")
+                    print(e)
                     logFile.write(f"[NODELETE] - {repomain}\n")
                     sleep(1)
                     continue
@@ -46,6 +47,7 @@ for repo in lineage.get_repos():
             except Exception as e:
                 logFile.write(f"[ERROR] - {repomain}\n")
                 print("Error Forking!")
+                print(e)
                 sleep(1)
                 continue
     else:
