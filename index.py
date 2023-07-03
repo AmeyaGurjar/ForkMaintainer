@@ -50,7 +50,7 @@ for repo_num, repo in enumerate(lineage.get_repos()):
                     logFile.write(f"[ERROR] - {repomain}\n")
                     print("Error Forking!")
                     print(e)
-                    sleep(1)
+                    sleep(80)
                     continue
     else:
         continue
