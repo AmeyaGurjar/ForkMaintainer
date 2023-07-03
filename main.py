@@ -40,7 +40,7 @@ for repo in lineage.get_repos():
                         sleep(1)
                         continue
         sleep(1)
-        if "--skip" not in str(argv[1]) and meowcheck==False:
+        if meowcheck==False:
             for i in range(10):
                 try:
                     org.create_fork(repo, default_branch_only=True)
