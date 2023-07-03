@@ -10,5 +10,5 @@ MY_REPO = "Project-FelineX"
 user = GIT.get_user(REPO_NAME)
 
 for repo in user.get_repos():
-    repo = repo.replace(f"{REPO_NAME}/", "")
+    repo = repo.full_name.replace(f"{REPO_NAME}/", "")
     print(repo)
