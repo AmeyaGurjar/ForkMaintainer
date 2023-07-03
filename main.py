@@ -17,10 +17,10 @@ try:
 except:
     pass
 logFile = open("logs.txt", "a")
-for repo in lineage.get_repos():
+for repo_num, repo in enumerate(lineage.get_repos()):
     repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
     if "device" not in repomain and "kernel" not in repomain:
-        print(f"{REPO_NAME}/{repomain}")
+        print(f"[{repo_num}] {REPO_NAME}/{repomain}")
         try:
             meowcheck = org.get_repo(repomain)
         except:
