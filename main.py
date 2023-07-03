@@ -14,6 +14,9 @@ for repo in lineage.get_repos():
     repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
     if "device" not in repomain and "kernel" not in repomain:
         print(f"{REPO_NAME}/{repomain}")
+        if org.get_repo(repomain):
+            org.get_repo(repomain).delete()
+            print("Deleted")
         try:
             org.create_fork(repo, default_branch_only=True)
             print("Forked!")
