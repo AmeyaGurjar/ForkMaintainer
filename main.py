@@ -13,7 +13,7 @@ user = GIT.get_organization(MY_REPO)
 for repo in lineage.get_repos():
     repo = repo.full_name.replace(f"{REPO_NAME}/", "")
     if "device" not in repo and "kernel" not in repo:
-        user.create_fork(repo)
+        user.create_fork(f"{REPO_NAME}/{repo}")
         print(repo)
     else:
         continue
