@@ -32,8 +32,9 @@ for repo in lineage.get_repos():
                     print("Deleted")
                     break
                 except:
+                    sleep(10)
                     continue
-        sleep(2)
+        sleep(1)
         while True:
             try:
                 org.create_fork(repo, default_branch_only=True)
@@ -41,6 +42,7 @@ for repo in lineage.get_repos():
                 print("Forked!")
                 break
             except Exception as e:
+                sleep(10)
                 continue
                 logFile.write(f"[ERROR] - {repomain}/n")
                 print("skipped")
