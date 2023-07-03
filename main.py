@@ -4,7 +4,7 @@ from github import Github
 from os import getenv, system
 
 GIT = Github(getenv("TOKEN"))
-REPO_NAME = "Lineage"
+REPO_NAME = "LineageOS"
 MY_REPO = "Project-FelineX"
 
 user = GIT.get_user(REPO_NAME)
