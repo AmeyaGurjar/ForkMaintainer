@@ -3,7 +3,7 @@ load_dotenv()
 from github import Github, Auth
 from os import getenv, system
 
-GIT = Github(auth=Auth.auth(getenv("TOKEN")))
+GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 REPO_NAME = "LineageOS"
 MY_REPO = "Project-FelineX"
 
