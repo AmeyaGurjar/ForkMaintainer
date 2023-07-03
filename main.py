@@ -25,7 +25,8 @@ for repo in lineage.get_repos():
         try:
             org.create_fork(repo, default_branch_only=True)
             print("Forked!")
-        except:
+        except Exception as e:
+            print(e)
             print("skipped")
     else:
         continue
