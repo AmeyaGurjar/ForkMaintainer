@@ -7,17 +7,14 @@ GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 REPO_NAME = "LineageOS"
 MY_REPO = "Project-FelineX"
 
-lineage = GIT.get_user(REPO_NAME)
-user = GIT.get_organization(MY_REPO)
+lineage = GIT.get_organization(REPO_NAME)
+org = GIT.get_organization(MY_REPO)
 
 for repo in lineage.get_repos():
-    repo = repo.full_name.replace(f"{REPO_NAME}/", "")
-    if "device" not in repo and "kernel" not in repo:
-        print(f"{REPO_NAME}/{repo}")
-        try:
-            user.create_fork(f"{REPO_NAME}/{repo}", default_branch_only=True)
-            print("Forked!")
-        except Exception as e:
-            print(e)
+    repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
+    if "device" not in repomain and "kernel" not in repomain:
+        print(f"{REPO_NAME}/{repomain}")
+        org.create_fork(repo, default_branch_only=True)
+        print("Forked!")
     else:
         continue
