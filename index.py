@@ -6,7 +6,7 @@ from github import Github, Auth
 from os import getenv, system, remove
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
-REPO_NAME = "LineageOS"
+REPO_NAME = "PixelExperience"
 MY_REPO = "Project-FelineX"
 meowcheck = False
 
@@ -19,7 +19,7 @@ except:
 logFile = open("logs.txt", "a")
 for repo_num, repo in enumerate(lineage.get_repos()):
     repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
-    if "device" not in repomain and "kernel" not in repomain:
+    if True:
         print(f"[{repo_num}] {REPO_NAME}/{repomain}")
         try:
             meowcheck = org.get_repo(repomain)
