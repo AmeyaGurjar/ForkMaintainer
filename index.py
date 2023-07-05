@@ -42,7 +42,7 @@ for repo_num, repo in enumerate(lineage.get_repos()):
         else:
             for i in range(10):
                 try:
-                    org.create_fork(repo, default_branch_only=True)
+                    org.create_fork(repo, default_branch_only=False)
                     logFile.write(f"[FORKED] - {repomain}\n")
                     print("Forked!")
                     break
