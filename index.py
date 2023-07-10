@@ -6,7 +6,7 @@ from github import Github, Auth
 from os import getenv, system, remove
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
-REPO_NAME = "PixelExperience"
+REPO_NAME = "Evolution-X"
 MY_REPO = "Project-FelineX"
 meowcheck = False
 
