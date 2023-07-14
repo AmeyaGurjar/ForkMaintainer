@@ -30,9 +30,8 @@ for repo_num, repo in enumerate(MY_REPOS):
         final_repo = target_org.get_repo(repo_name)
         print(final_repo.forks_url)
         for branch in repo.get_branches():
-            print(branch)
             try:
-                repo.merge(base=branch, head=final_repo.get_branch(branch), commit_message="Synced")
+                repo.merge(base=branch.name, head=final_repo.get_branch(branch.name), commit_message="Synced")
             except Exception as e:
                 print(f"[ERROR] - {repo_name}")
                 logFile.write(f"[ERROR] - {repo_name} - {e}")
