@@ -1,5 +1,5 @@
 # Meow
-**Things Add In .env File:**
+**Create A .env File And Add These:**
 
 ```TARGET_REPO=<TARGET REPO>```
 
