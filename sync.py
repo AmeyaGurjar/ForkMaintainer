@@ -26,7 +26,7 @@ for tar_num, tar_repo in enumerate(TARGET_REPOS):
 for repo_num, repo in enumerate(MY_REPOS):
     repo_name = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_ORG}/")
     if (repo_name in TARGET_ALL_REPOS):
-        print(target_org.forks())
-        print(target_org.forks_url())
+        print(target_org.forks)
+        print(target_org.forks_url)
         
 logFile.close()
