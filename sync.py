@@ -29,6 +29,7 @@ for repo_num, repo in enumerate(MY_REPOS):
     if (repo_name_tar in TARGET_ALL_REPOS):
         final_repo = target_org.get_repo(repo_name)
         for branch in repo.get_branches():
+            print(repo_name, branch, branch.name)
             try:
                 repo.merge(base=branch.name, head=final_repo.get_branch(branch.name).commit.sha, commit_message="Synced")
                 logFile.write(f"[SYNCED] - {repo_name}|{branch.name}")
