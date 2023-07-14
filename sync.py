@@ -14,7 +14,7 @@ logFile = open("logs.txt", "a")
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 my_org = GIT.get_organization(MY_ORG)
-target_org = GIT.get_organizarion(TARGET_ORG)
+target_org = GIT.get_organization(TARGET_ORG)
 MY_REPOS = my_org.get_repos()
 TARGET_REPOS = target_org.get_repos()
 
