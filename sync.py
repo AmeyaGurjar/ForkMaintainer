@@ -4,7 +4,8 @@ from sys import argv
 from time import sleep
 from github import Github, Auth
 from os import getenv, system, remove
-MY_REPO = str(getenv("MY_REPO"))
+MY_ORG = str(getenv("MY_REPO"))
+PARENT_ORG = str(getenv("TARGET_REPO"))
 try:
     remove("logs.txt")
 except:
@@ -12,15 +13,13 @@ except:
 logFile = open("logs.txt", "a")
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
-org = GIT.get_organization(MY_REPO)
+my_org = GIT.get_organization(MY_ORG)
+target_org = Get.get_organizarion(TARGET_ORG)
+MY_REPOS = my_org.get_repos()
+TARGET_REPOS = target_org.get_repos()
 
-for repo_num, repo in enumerate(org.get_repos()):
-    print(f"Deleting {repo.full_name}")
-    try:
-        repo.delete()
-        logFile.write(f"{repo_num} - [DELETED] - {repo.full_name}")
-        print(f"{repo_num} - [DELETED] - {repo.full_name}")
-    except:
-        logFile.write(f"{repo_num} - [ERROR] - {repo.full_name}")
-        print(f"{repo_num} - [ERROR] - {repo.full_name}")
+for repo_num, repo in enumerate(MY_REPOS):
+    if (repo in TARGET_REPOS):
+        print(target_org.forks())
+        print(target_org.forks_url())
 logFile.close()
