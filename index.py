@@ -59,7 +59,7 @@ for repo_num, repo in enumerate(lineage.get_repos()):
                         print("Forked!")
                         break
                     except Exception as e:
-                        logFile.write(f"[ERROR] - {repomain}\n")
+                        logFile.write(f"[ERROR] - {repomain} - {e}\n")
                         print("Error Forking!")
                         print(e)
                         if "API" not in str(e):
