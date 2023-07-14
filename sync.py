@@ -21,6 +21,7 @@ TARGET_REPOS = target_org.get_repos()
 
 for tar_num, tar_repo in enumerate(TARGET_REPOS):
     TARGET_ALL_REPOS.append(str(tar_repo.full_name))
+    print(f"[{tar_num}] - FETCHED")
     
 for repo_num, repo in enumerate(MY_REPOS):
     repo_name = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_ORG}/")
