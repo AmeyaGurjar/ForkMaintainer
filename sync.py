@@ -19,7 +19,7 @@ MY_REPOS = my_org.get_repos()
 TARGET_REPOS = target_org.get_repos()
 
 for repo_num, repo in enumerate(MY_REPOS):
-    repo_name = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_REPO}/")
+    repo_name = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_ORG}/")
     if (repo_name in TARGET_REPOS):
         print("Meow")
         print(target_org.forks())
