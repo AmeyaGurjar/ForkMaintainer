@@ -51,6 +51,7 @@ for repo_num, repo in enumerate(lineage.get_repos()):
                 if (repomain in ignored_repos):
                     print("IGNORED!")
                     logFile.write(f"[IGNORED] - {repomain}\n")
+                    break
                 else:
                     try:
                         org.create_fork(repo, default_branch_only=False)
