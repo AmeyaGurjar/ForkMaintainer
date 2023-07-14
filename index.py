@@ -9,6 +9,8 @@ GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 REPO_NAME = str(getenv("TARGET_REPO"))
 MY_REPO = str(getevn("MY_REPO"))
 meowcheck = False
+ignored_repoStrings = str(getenv("IGNORED")).split(" ")
+ignored_repos = []
 
 lineage = GIT.get_organization(REPO_NAME)
 org = GIT.get_organization(MY_REPO)
@@ -19,6 +21,11 @@ except:
 logFile = open("logs.txt", "a")
 for repo_num, repo in enumerate(lineage.get_repos()):
     repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
+    for ignore_repoString in ingored_repoStrings:
+        if (ignore_repo in repomain):
+            ignored_repos.append(repomain)
+        else:
+            continue
     if True:
         print(f"[{repo_num}] {REPO_NAME}/{repomain}")
         try:
@@ -36,24 +43,28 @@ for repo_num, repo in enumerate(lineage.get_repos()):
                     except Exception as e: 
                         print("Error Deletion!")
                         print(e)
-                        logFile.write(f"[NODELETE] - {repomain}\n")
+                        logFile.write(f"[NO_DELETE] - {repomain}\n")
                         sleep(1)
                         continue
         else:
             for i in range(10):
-                try:
-                    org.create_fork(repo, default_branch_only=False)
-                    logFile.write(f"[FORKED] - {repomain}\n")
-                    print("Forked!")
-                    break
-                except Exception as e:
-                    logFile.write(f"[ERROR] - {repomain}\n")
-                    print("Error Forking!")
-                    print(e)
-                    if "API" not in str(e):
+                if (repomain in ignored_repos):
+                    print("IGNORED!")
+                    logFile.write(f"[IGNORED] - {repomain}\n")
+                else:
+                    try:
+                        org.create_fork(repo, default_branch_only=False)
+                        logFile.write(f"[FORKED] - {repomain}\n")
+                        print("Forked!")
                         break
-                    sleep(80)
-                    continue
+                    except Exception as e:
+                        logFile.write(f"[ERROR] - {repomain}\n")
+                        print("Error Forking!")
+                        print(e)
+                        if "API" not in str(e):
+                            break
+                        sleep(80)
+                        continue
     else:
         continue
 logFile.close()
