@@ -21,7 +21,7 @@ except:
 logFile = open("logs.txt", "a")
 for repo_num, repo in enumerate(lineage.get_repos()):
     repomain = repo.full_name.replace(f"{REPO_NAME}/", "")
-    for ignore_repoString in ingored_repoStrings:
+    for ignore_repoString in ignored_repoStrings:
         if (ignore_repo in repomain):
             ignored_repos.append(repomain)
         else:
