@@ -5,7 +5,7 @@ from time import sleep
 from github import Github, Auth
 from os import getenv, system, remove
 MY_ORG = str(getenv("MY_REPO"))
-PARENT_ORG = str(getenv("TARGET_REPO"))
+TARGET_ORG = str(getenv("TARGET_REPO"))
 try:
     remove("logs.txt")
 except:
