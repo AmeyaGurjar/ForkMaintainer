@@ -8,10 +8,10 @@ MY_ORG = str(getenv("MY_REPO"))
 TARGET_ORG = str(getenv("TARGET_REPO"))
 TARGET_ALL_REPOS = []
 try:
-    remove("logs.txt")
+    remove("sync-logs.txt")
 except:
     pass
-logFile = open("logs.txt", "a")
+logFile = open("sync-logs.txt", "a")
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 my_org = GIT.get_organization(MY_ORG)
