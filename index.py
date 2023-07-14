@@ -7,7 +7,7 @@ from os import getenv, system, remove
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 REPO_NAME = str(getenv("TARGET_REPO"))
-MY_REPO = str(getevn("MY_REPO"))
+MY_REPO = str(getenv("MY_REPO"))
 meowcheck = False
 ignored_repoStrings = str(getenv("IGNORED")).split(" ")
 ignored_repos = []
