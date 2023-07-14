@@ -19,7 +19,7 @@ MY_REPOS = my_org.get_repos()
 TARGET_REPOS = target_org.get_repos()
 
 for repo_num, repo in enumerate(MY_REPOS):
-    if (repo in TARGET_REPOS):
+    if (repo.full_name.replace(f"{MY_ORG}/", "") in TARGET_REPOS):
         print(target_org.forks())
         print(target_org.forks_url())
 logFile.close()
