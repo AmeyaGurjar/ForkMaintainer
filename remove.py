@@ -6,10 +6,10 @@ from github import Github, Auth
 from os import getenv, system, remove
 MY_REPO = "Project-FelineX"
 try:
-    remove("logs.txt")
+    remove("remove-logs.txt")
 except:
     pass
-logFile = open("logs.txt", "a")
+logFile = open("remove-logs.txt", "a")
 
 GIT = Github(auth=Auth.Token(getenv("TOKEN")))
 org = GIT.get_organization(MY_REPO)
