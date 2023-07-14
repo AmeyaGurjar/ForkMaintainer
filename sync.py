@@ -28,7 +28,6 @@ for repo_num, repo in enumerate(MY_REPOS):
     repo_name = str(repo.full_name).replace(f"{MY_ORG}/", "")
     if (repo_name_tar in TARGET_ALL_REPOS):
         final_repo = target_org.get_repo(repo_name)
-        print(final_repo.forks_url)
         for branch in repo.get_branches():
             try:
                 repo.merge(base=branch.name, head=final_repo.get_branch(branch.name), commit_message="Synced")
