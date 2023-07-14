@@ -6,6 +6,7 @@ from github import Github, Auth
 from os import getenv, system, remove
 MY_ORG = str(getenv("MY_REPO"))
 TARGET_ORG = str(getenv("TARGET_REPO"))
+TARGET_ALL_REPOS = []
 try:
     remove("logs.txt")
 except:
@@ -18,10 +19,13 @@ target_org = GIT.get_organization(TARGET_ORG)
 MY_REPOS = my_org.get_repos()
 TARGET_REPOS = target_org.get_repos()
 
+for tar_num, tar_repo in enumerate(TARGET_REPOS):
+    TARGET_ALL_REPOS.append(str(tar_repo.full_name))
+    
 for repo_num, repo in enumerate(MY_REPOS):
     repo_name = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_ORG}/")
-    if (repo_name in TARGET_REPOS):
-        print("Meow")
+    if (repo_name in TARGET_ALL_REPOS):
         print(target_org.forks())
         print(target_org.forks_url())
+        
 logFile.close()
