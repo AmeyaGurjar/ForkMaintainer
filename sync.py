@@ -27,6 +27,8 @@ for repo_num, repo in enumerate(MY_REPOS):
     repo_name_tar = str(repo.full_name).replace(f"{MY_ORG}/", f"{TARGET_ORG}/")
     repo_name = str(repo.full_name).replace(f"{MY_ORG}/", "")
     if (repo_name_tar in TARGET_ALL_REPOS):
-        print(target_org.get_repo(repo_name).forks)
-        print(target_org.get_repo(repo_name).forks_url)
+        final_repo = target_org.get_repo(repo_name)
+        print(final_repo.forks_url)
+        final_repo.merge(commit_message="Synced")
+        
 logFile.close()
