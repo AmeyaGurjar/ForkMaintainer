@@ -33,7 +33,7 @@ for repo_num, repo in enumerate(MY_REPOS):
                 repo.merge(base=branch.name, head=final_repo.get_branch(branch.name), commit_message="Synced")
                 logFile.write(f"[SYNCED] - {repo_name}|{branch.name}")
             except Exception as e:
-                print(f"[ERROR] - {repo_name}")
+                print(f"[ERROR] - {repo_name}|{branch.name}")
                 logFile.write(f"[ERROR] - {repo_name}|{branch.name} - {e}")
         
 logFile.close()
